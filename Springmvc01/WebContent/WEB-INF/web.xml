@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns="http://java.sun.com/xml/ns/javaee" 
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  
+  <!--  
+  	 配置REST 过滤器 HidderHttpMethodFilter
+  	 将满足转换条件的请求进行转化
+  	 1，必须是post请求，
+  	 2，必须通过——method能获取到一个请求参数值（要换成请求的方式）
+  	 
+   -->
+   
+   <filter>
+   	<filter-name>HiddenHttpMethodFilter</filter-name>
+   	<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+   </filter>
+   <filter-mapping>
+   	<filter-name>HiddenHttpMethodFilter</filter-name>
+   	<url-pattern>/*</url-pattern>
+   </filter-mapping>
+  
+ 
+  <!--  前端控制器  核心控制器  -->
+  <!-- The front controller of this Spring Web application, responsible for handling all application requests -->
+	<servlet>
+		<servlet-name>springDispatcherServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!--	给DispatcherServlet  配置初始化参数：
+					指定springmvc的核心配置文件
+		-->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:springmvc.xml</param-value>
+		</init-param>
+		
+		<!-- load-on-startup
+			设置DispatcherServlet的加载时机
+			Servlet的创建时机
+				1，请求到达后创建
+				2，服务器启动创建
+		 -->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- Map all requests to the DispatcherServlet for handling -->
+	<!-- 指定请求的匹配 -->
+	<servlet-mapping>
+		<servlet-name>springDispatcherServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+  
+</web-app>

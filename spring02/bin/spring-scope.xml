@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<!-- 
+	
+		bean的作用域  :
+		singleton: 单利模式 （默认值）
+		在整个Ioc容器中只能存在一个bean 而且在IOC容器对象被创建时，
+		就创建单例的bean对象,后续每次通过getBean()方法，获取bean
+		对象时，返回的都是同一个对象
+		
+		prototype : 多例的  在整个IOC容器中 可有多个bean的对象，
+					在IOC容器对象被创建的 不会创建原型的bean对象
+					而是等到每次通过getBean()方法获取bean对象
+					才会创建一个新的bean对象返回
+					
+		request : 一次请求对应一个bean对象
+		session : 一次会话对应一个bean对象			
+		
+	
+	 -->
+
+		<bean id="car"  class="huanma.Car" scope="singleton">
+		
+		
+		<property name="brand" value="奥迪"></property>
+		<property name="price" value="4000000"></property>
+		
+		</bean>
+
+
+
+
+</beans>

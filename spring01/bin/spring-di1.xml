@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="movie" class="hao.Movie">
+        <constructor-arg value="战狼2" ></constructor-arg>
+        <constructor-arg value="吴京"></constructor-arg>
+        <constructor-arg value="40"></constructor-arg>
+    </bean>
+    
+		<!-- 顺序打乱可以加入索引，在value后面加入index 指定参数位置 
+			type:指定参数类型
+		
+		-->
+   
+</beans>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Car -->
+	<bean id="car" class="xiaohuaner.Car">
+		<property name="brand" value="奔驰"></property>
+		<property name="price" value ="40000000"></property>
+	</bean>
+	
+	<!-- Address-->
+	<bean id="address" class="xiaohuaner.Address">
+		<property name="province" value="河北省"></property>
+		<property name="city" value="衡水市"></property>
+	</bean>
+	
+	<!-- Person  : 演示自动装配 
+		byName : 使用bean的属性名与ioc的容器中<bean>的id值进行匹配，匹配成功则装配成功 
+		
+		byType : 使用bean的属性的类型与IOC容器中<bean>的class进行匹配，匹配成功则装配
+				   成功 ，如果匹配到多个兼容类型的bean ，则跑出异常
+	-->
+	
+	<bean id="person" class="xiaohuaner.Person" autowire="byName">
+		<property name="name" value="小欢儿"></property>
+	
+	</bean>
+	
+	
+</beans>

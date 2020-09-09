@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+	<!-- 配置bean 	   
+	   基于xml的方式，使用的全类名的方式，
+	   bean
+	   <bean>:受Spring管理的一个JavaBean对象
+	   id:<bean>的唯一标识，(在整个配置文件中(IOC容器)) 在IOC容器当中唯一不重复
+	   class:指定JavaBean的全类名，目的是通过反射创建对象
+	   huanma.Person
+	   <property>:给对象属性赋值
+	        name:指定属性名 指定set风格的属性名
+	        value:指定属性值
+	        
+	        xmlns:p="http://www.springframework.org/schema/p"
+	        
+	        p命名空间
+	   -->
+	   
+	<bean id="person" class="huanma.Person">
+	<property name="name1" value="小宝贝"></property>
+	
+	
+	</bean>
+	<bean id="person1" class="huanma.Person">
+	<property name="name1" value="小宝贝"></property>
+	
+	</bean>
+	
+	
+
+</beans>

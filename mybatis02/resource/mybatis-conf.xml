@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- 配置 -->
+<configuration>
+
+		<!-- 1. 
+		<properties></properties>
+				<property> : 一个具体的属性路径
+				resource : 引入类路径下的属性文件
+				url : 引入网络路径或者是磁盘路径下的属性文件 
+		
+		-->	
+		
+		<properties resource="db.properties">
+		
+		</properties>
+		
+		
+		
+		<!-- 2.settings:包含了很多重要的的设置项 -->
+		<settings>
+		<!-- 映射下划线到驼峰命名 -->
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+			<!--  在全局配置文件中加上两个Settings设置 -->
+			<setting name ="lazyLoadingEnabled" value="true" />
+			<setting name ="aggressiveLazyLoading" value ="false" />
+			
+		</settings>
+		
+		<!-- 3.typeAliases
+			<typeAlias> : 给某个Java类型取别名
+			  type: 指定Java的全类名
+			  alias:指定别名，默认的别名就是类名
+			  <package> : 为指定的包以及子包下的类批量取别名
+			  如果有别名冲突的情况下，可以使用@Alias注解为冲突的类具体指定别名
+		 -->
+		 
+		 <typeAliases>
+		 	<!-- <typeAlias type="com.mybatis.bean.Employee" alias="employee"/> -->
+		 	<package name="com.mybatis.bean"/>
+		 </typeAliases>
+		
+		
+		
+		
+		
+	<!-- 4。环境们 
+		<environments> : mybatis支持配置多个环境。通过default来指定具体的环境
+		  environment:具体的环境
+		  	<transactionManager> :事务管理
+		  	   JDBC : JdbcTransactionFactory
+		  	   MANAGED: ManagedTransactionFactory
+		  	   结论 : 事务管理将来是交给Spring来做
+		  	   
+	-->
+	<environments default="development">
+		<!-- 具体的环境 -->
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driver}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
+			</dataSource>
+		</environment>
+		
+		
+		<!-- 例 -->
+		
+		
+		
+		
+	</environments>
+	<!-- 5  ,   引入sql映射文件  
+		<mapper> :引入一个sql映射文件
+			resource 引入类路径下的sql映射文件
+			<package> : 批量写入 sql映射文件
+				要求：sql映射文件必须要由mapper接口同名 同位置
+	
+	
+	
+	-->
+	<mappers>
+		<!--  <mapper resource="EmployeeMapper.xml" />  -->
+		<package name="com.mybatis.dao"/> 
+	</mappers>
+	 
+</configuration>
